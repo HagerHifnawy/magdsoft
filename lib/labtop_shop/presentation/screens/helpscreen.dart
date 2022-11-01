@@ -25,9 +25,7 @@ class HelpScreen extends StatelessWidget {
         },
         builder: (context, state) {
           var list =AppCubit.get(context).helpdata;
-          return ConditionalBuilder(
-              condition: state is! AppLoadingGetDataState,
-              builder: (context) =>ScaffoldGradientBackground(
+          return ScaffoldGradientBackground(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -37,7 +35,9 @@ class HelpScreen extends StatelessWidget {
                   ],
                   stops: [0.05, 0.5],
                 ),
-                body: SingleChildScrollView(
+                body: ConditionalBuilder(
+                  condition: state is! AppLoadingGetDataState,
+                  builder: (context) =>SingleChildScrollView(
                       child: Padding(
                         padding: const EdgeInsets.only(
                           top: 40.0,
@@ -77,10 +77,10 @@ class HelpScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                    ),
+                    ), fallback: (BuildContext context) =>
+                    Center(child: CircularProgressIndicator())
               ),
-              fallback: (context) =>
-                  Center(child: CircularProgressIndicator()));
+          );
         },
       ),
     );

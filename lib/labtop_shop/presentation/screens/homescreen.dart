@@ -27,9 +27,7 @@ class HomeScreen extends StatelessWidget {
         },
         builder: (context, state) {
           var list = AppCubit.get(context).productdata;
-          return ConditionalBuilder(
-            condition: state is! AppLoadingGetDataState,
-            builder: (context) => ScaffoldGradientBackground(
+          return  ScaffoldGradientBackground(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -39,85 +37,87 @@ class HomeScreen extends StatelessWidget {
                 ],
                 stops: [0.05, 0.5],
               ),
-              body: SingleChildScrollView(
+              body:  ConditionalBuilder(
+                condition: state is! AppLoadingGetDataState,
+                builder: (context) =>SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 40.0,
-                    right: 20.0,
-                    left: 20.0,
-                    bottom: 20.0,
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: 70.w,
-                            height: 7.h,
-                            child: custtomTextForm(
-                              textinputtype: TextInputType.name,
-                              labelText: 'Search',
-                              suffix: Icons.search,
-
-                            ),
-                          ),
-                          Container(
-                            width: 7.h,
-                            height: 7.h,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10.0),
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 2.0,
-                                  color: Colors.grey,
-                                  spreadRadius: 2.0,
-                                ),
-                              ],
-                            ),
-                            child: Image.asset(AppImages.cup),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.topCenter,
-                        height: 30.h,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                              AppImages.acer,
-                            ),
-                            // fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: 7.h,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.only(
+                      top: 40.0,
+                      right: 20.0,
+                      left: 20.0,
+                      bottom: 20.0,
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                             labTybeItem(
-                                  AssetImage(AppImages.cupYellow),'All',AppColors.blue,),
-                            SizedBox(width: 2.5.w,),
-                            labTybeItem(
-                                AssetImage(AppImages.razerlogo),'Acer',AppColors.white,),
-                            SizedBox(width: 2.5.w,),
-                            labTybeItem(
+                            Container(
+                              width: 70.w,
+                              height: 7.h,
+                              child: custtomTextForm(
+                                textinputtype: TextInputType.name,
+                                labelText: 'Search',
+                                suffix: Icons.search,
 
-                                AssetImage(AppImages.acerlogo),'Razer',AppColors.white,),
-                            SizedBox(width: 2.5.w,),
-                            labTybeItem(
-                                AssetImage(AppImages.ios),'Apple',AppColors.white,),
+                              ),
+                            ),
+                            Container(
+                              width: 7.h,
+                              height: 7.h,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 2.0,
+                                    color: Colors.grey,
+                                    spreadRadius: 2.0,
+                                  ),
+                                ],
+                              ),
+                              child: Image.asset(AppImages.cup),
+                            ),
                           ],
                         ),
-                      ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      Row(
+                        Container(
+                          alignment: AlignmentDirectional.topCenter,
+                          height: 30.h,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(
+                                AppImages.acer,
+                              ),
+                              // fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 7.h,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                               labTybeItem(
+                                    AssetImage(AppImages.cupYellow),'All',AppColors.blue,),
+                              SizedBox(width: 2.5.w,),
+                              labTybeItem(
+                                  AssetImage(AppImages.razerlogo),'Acer',AppColors.white,),
+                              SizedBox(width: 2.5.w,),
+                              labTybeItem(
+
+                                  AssetImage(AppImages.acerlogo),'Razer',AppColors.white,),
+                              SizedBox(width: 2.5.w,),
+                              labTybeItem(
+                                  AssetImage(AppImages.ios),'Apple',AppColors.white,),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 2.h,
+                        ),
+                        Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
@@ -176,14 +176,14 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                         ],
-                      ),
-                    ],
+                        ),
+
+                      ],
+                    ),
                   ),
-                ),
-              ),
+              ), fallback: (BuildContext context) =>
+                  Center(child: CircularProgressIndicator()),
             ),
-            fallback: (BuildContext context) =>
-                Center(child: CircularProgressIndicator()),
           );
         },
       ),
