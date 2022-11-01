@@ -16,7 +16,7 @@ TextEditingController controller;
   Widget build(BuildContext context) {
     return Container(
       width: 15.w,
-      height: 8.h,
+      height: 7.h,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(

@@ -53,7 +53,8 @@ class HomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: 75.w,
+                            width: 70.w,
+                            height: 7.h,
                             child: custtomTextForm(
                               textinputtype: TextInputType.name,
                               labelText: 'Search',
@@ -63,6 +64,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           Container(
                             width: 7.h,
+                            height: 7.h,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.all(

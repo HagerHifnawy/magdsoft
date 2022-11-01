@@ -21,7 +21,8 @@ class custtomTextForm extends StatelessWidget {
     return Card(
       child: Container(
           width: 170.w,
-          height: 7.h,
+          height: 5.h,
+
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(

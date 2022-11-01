@@ -37,15 +37,13 @@ class VerifyPhoneScreen extends StatelessWidget {
                 .message}'
               , style: AppTheme.lightTheme.textTheme.titleMedium,
             ),
-            position: MotionToastPosition.top,
+            position: MotionToastPosition.bottom,
             icon: Icons.zoom_out,
             secondaryColor: AppColors.blue,
             description: Text(''),
 
           ).show(context);}
-          Navigator.push(context,
-              MaterialPageRoute(
-                  builder: (context) => HelpScreen()));
+
 
         },
       builder: (context, state) {
@@ -146,6 +144,9 @@ class VerifyPhoneScreen extends StatelessWidget {
                                     .get(context)
                                     .phoneController
                                     .text,);
+                              Navigator.push(context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HelpScreen()));
                           }
                           ), fallback: (BuildContext context) =>
                   Center(child: CircularProgressIndicator(),),
